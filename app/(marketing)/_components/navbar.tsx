@@ -1,8 +1,24 @@
-'use client'
+"use client";
+
+import { useScrollTop } from "@/hooks/use-scroll-top";
+import { cn } from "@/lib/utils";
+import { Logo } from "./logo";
+
+import { ModeToggle } from "@/components/mode-toggle";
+
 
 const NavBar = () => {
+    const scrolled = useScrollTop();
     return (
-        <div>navbar</div>
+
+        <div className={cn("z-50 bg-background fixed top-0 flex items-center w-full p-6",
+            scrolled && "border-b shadow-sm"
+        )}>
+            <Logo />
+            <div className="md:ml-auto  md:jusitfy-end justify-between w-full flex items-center gap-x-2">
+                <ModeToggle />
+            </div>
+        </div>
     );
 }
 
